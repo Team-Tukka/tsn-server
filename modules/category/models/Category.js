@@ -1,12 +1,12 @@
 import { Schema, model } from "mongoose";
 
-const TextareaSchema = new Schema({
-  text: {
+const CategorySchema = new Schema({
+  name: {
     type: String,
     required: true
   }
 });
 
-const Textarea = model("text", TextareaSchema);
+const Category = model("category", CategorySchema);
 
 module.exports = User;

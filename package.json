@@ -4,8 +4,8 @@
   "description": "Serverdelen til hovedopgave for Top Scooter Nordic",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "nodemon --exec babel-node server.js",
+    "server": "nodemon server --exec babel-node server.js"
   },
   "repository": {
     "type": "git",
