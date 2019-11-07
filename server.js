@@ -1,5 +1,7 @@
 import express from "express";
 import connectDB from "./config/db";
+import typeDefs from "./modules/schemas";
+import resolvers from "./modules/resolvers";
 
 const app = express();
 
