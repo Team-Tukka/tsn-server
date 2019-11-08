@@ -12,7 +12,7 @@ const apolloServer = new ApolloServer({
   typeDefs,
   resolvers,
   context: ({ req }) => {
-    const tokenWithBearer = req.headers.authorizztion || '';
+    const tokenWithBearer = req.headers.authorization || '';
     const token = tokenWithBearer.split(' ')[1];
     const user = getUser(token);
 
