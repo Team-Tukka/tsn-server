@@ -37,8 +37,6 @@ const UserSchema = new Schema({
   },
   zipCode: {
     type: Number,
-    min: 4,
-    max: 4,
     required: true
   },
   phone: {

@@ -11,8 +11,13 @@ const userTypeDefs = gql`
     lastLogin: String
     adminRole: Boolean
     address: String!
-    zipCode: Number!
-    phone: Number
+    zipCode: Int!
+    phone: Int
+  }
+
+  extend type Query {
+    getUsers: [User]
+    me: User
   }
 
   extend type Mutation {
@@ -23,8 +28,8 @@ const userTypeDefs = gql`
       password: String!
       adminRole: Boolean
       address: String!
-      zipCode: Number!
-      phone: Number
+      zipCode: Int!
+      phone: Int
     ): User
   }
 `;
