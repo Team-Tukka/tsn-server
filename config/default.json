@@ -1,3 +1,4 @@
 {
-    "mongoURI": "mongodb+srv://tukka:akkut@tsn-mif23.mongodb.net/test?retryWrites=true&w=majority"
+  "mongoURI": "mongodb+srv://tukka:akkut@tsn-mif23.mongodb.net/test?retryWrites=true&w=majority",
+  "jwtSecret": "WvcFxtLpyMRRUA5NDE7R"
 }
