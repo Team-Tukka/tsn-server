@@ -4,6 +4,15 @@ import jwt from "jsonwebtoken";
 import config from "config";
 
 const userResolvers = {
+  Query: {
+    getUsers: async () => await User.find({}),
+    async me(_, args, { user }) {
+      if (!user) {
+        throw new Error("Brugeren findes ikke");
+      }
+      await User.findById(user.id);
+    }
+  },
   Mutation: {
     addUser: async (parent, user) => {
       const salt = await bcryptjs.genSalt(10);

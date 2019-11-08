@@ -1,4 +1,5 @@
 import { gql } from "apollo-server-express";
+import userTypeDefs from "./user/userSchema";
 
 const linkSchema = gql`
   type Query {
@@ -13,8 +14,6 @@ const linkSchema = gql`
     _: Boolean
   }
 `;
-
-import userTypeDefs from "./user/userSchema";
 
 const typeDefs = [linkSchema, userTypeDefs];
 
