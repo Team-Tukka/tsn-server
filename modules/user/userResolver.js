@@ -35,7 +35,7 @@ const userResolvers = {
       try {
         const user = await User.findOne({ mail: args.mail });
         if (!user) throw new Error('Din mail eller password er forkert');
-        const passwordIsVailed = await bcryptjs.compareSync(
+        const passwordIsValid = await bcryptjs.compareSync(
           args.password,
           user.password
         );
