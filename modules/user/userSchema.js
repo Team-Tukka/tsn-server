@@ -1,4 +1,4 @@
-import { gql } from "apollo-server-express";
+import { gql } from 'apollo-server-express';
 
 const userTypeDefs = gql`
   type User {
@@ -31,6 +31,7 @@ const userTypeDefs = gql`
       zipCode: Int!
       phone: Int
     ): User
+    login(mail: String!, password: String!): User
   }
 `;
 module.exports = userTypeDefs;
