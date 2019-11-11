@@ -21,12 +21,12 @@ const UserSchema = new Schema({
     max: 32
   },
   created: {
-    type: Date,
-    default: Date.now
+    type: String,
+    required: true
   },
   lastLogin: {
-    type: Date,
-    default: Date.now
+    type: String,
+    required: true
   },
   adminRole: {
     type: Boolean

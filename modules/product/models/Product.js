@@ -5,9 +5,14 @@ const ProductSchema = new Schema({
     type: String,
     requried: true
   },
-  stock: {
-    type: Number,
-    required: true
+  sku: {
+    type: String
+  },
+  tags: {
+    type: String
+  },
+  brand: {
+    type: String
   },
   description: {
     type: String
