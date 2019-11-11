@@ -9,4 +9,4 @@ const TextareaSchema = new Schema({
 
 const Textarea = model("text", TextareaSchema);
 
-module.exports = User;
+module.exports = Textarea;

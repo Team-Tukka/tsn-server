@@ -21,4 +21,4 @@ const OrderSchema = new Schema({
 
 const Order = model("order", OrderSchema);
 
-module.exports = User;
+module.exports = Order;

@@ -55,4 +55,4 @@ const InvoiceSchema = new Schema({
 
 const Invoice = model("invoice", InvoiceSchema);
 
-module.exports = User;
+module.exports = Invoice;

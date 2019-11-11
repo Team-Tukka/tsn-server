@@ -13,6 +13,7 @@ const userTypeDefs = gql`
     address: String!
     zipCode: Int!
     phone: Int
+    token: String
   }
 
   extend type Query {
@@ -32,6 +33,7 @@ const userTypeDefs = gql`
       phone: Int
     ): User
     login(mail: String!, password: String!): User
+    verifyToken(token: String!): User
   }
 `;
 module.exports = userTypeDefs;
