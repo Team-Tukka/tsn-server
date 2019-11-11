@@ -9,4 +9,4 @@ const CategorySchema = new Schema({
 
 const Category = model("category", CategorySchema);
 
-module.exports = User;
+module.exports = Category;

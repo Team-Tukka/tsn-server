@@ -12,4 +12,4 @@ const SubCategorySchema = new Schema({
 
 const SubCategory = model("subCategory", SubCategorySchema);
 
-module.exports = User;
+module.exports = SubCategory;
