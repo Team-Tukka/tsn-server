@@ -13,7 +13,6 @@ const userTypeDefs = gql`
     address: String!
     zipCode: Int!
     phone: Int
-    token: String
   }
 
   extend type Query {
