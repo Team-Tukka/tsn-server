@@ -9,7 +9,7 @@ const ProductSchema = new Schema({
     type: String
   },
   tags: {
-    type: String
+    type: [String]
   },
   brand: {
     type: String
@@ -18,7 +18,7 @@ const ProductSchema = new Schema({
     type: String
   },
   itemNo: {
-    type: Number,
+    type: String,
     required: true
   },
   categoryId: {

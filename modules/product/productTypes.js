@@ -5,7 +5,7 @@ const productTypeDefs = gql`
     _id: ID
     name: String!
     sku: String
-    tags: String
+    tags: [String]
     brand: String
     description: String
     itemNo: String!
@@ -15,6 +15,19 @@ const productTypeDefs = gql`
 
   extend type Query {
     getProducts: [Product]
+  }
+
+  extend type Mutation {
+    addProduct(
+      name: String!
+      sku: String
+      tags: [String]
+      brand: String
+      description: String
+      itemNo: String!
+      categoryId: String
+      subCategoryId: String
+    ): Product
   }
 `;
 module.exports = productTypeDefs;
