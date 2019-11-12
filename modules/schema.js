@@ -1,5 +1,6 @@
 import { gql } from "apollo-server-express";
 import userTypeDefs from "./user/userTypes";
+import productTypeDefs from "./product/productTypes";
 
 const linkSchema = gql`
   type Query {
@@ -15,6 +16,6 @@ const linkSchema = gql`
   }
 `;
 
-const typeDefs = [linkSchema, userTypeDefs];
+const typeDefs = [linkSchema, userTypeDefs, productTypeDefs];
 
 module.exports = typeDefs;
