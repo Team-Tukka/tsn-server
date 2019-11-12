@@ -1,5 +1,6 @@
-import userResolvers from "./user/userResolvers";
-import productResolvers from "./product/productResolvers";
+import userResolvers from './user/userResolvers';
+import productResolvers from './product/productResolvers';
+import sparepartResolvers from './sparepart/sparepartResolvers';
 
-const resolvers = [userResolvers, productResolvers];
+const resolvers = [userResolvers, productResolvers, sparepartResolvers];
 module.exports = resolvers;

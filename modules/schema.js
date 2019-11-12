@@ -1,6 +1,7 @@
-import { gql } from "apollo-server-express";
-import userTypeDefs from "./user/userTypes";
-import productTypeDefs from "./product/productTypes";
+import { gql } from 'apollo-server-express';
+import userTypeDefs from './user/userTypes';
+import productTypeDefs from './product/productTypes';
+import sparepartTypeDefs from './sparepart/sparepartTypes';
 
 const linkSchema = gql`
   type Query {
@@ -16,6 +17,6 @@ const linkSchema = gql`
   }
 `;
 
-const typeDefs = [linkSchema, userTypeDefs, productTypeDefs];
+const typeDefs = [linkSchema, userTypeDefs, productTypeDefs, sparepartTypeDefs];
 
 module.exports = typeDefs;
