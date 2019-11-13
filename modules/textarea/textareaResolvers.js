@@ -6,7 +6,7 @@ const textareaResolvers = {
       // Query til at hente alle tekstfelter
       const doc = await Textarea.find({});
       // Hvis der er 0 tekstfelter i databasen, så smides en fejl
-      if (doc.lenght === 0) {
+      if (doc.length === 0) {
         throw new Error('Ingen tekstfelter fundet!');
       } else {
         return doc;
