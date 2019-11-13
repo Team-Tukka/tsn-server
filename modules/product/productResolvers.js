@@ -1,4 +1,4 @@
-import Product from "./models/Product";
+import Product from './models/Product';
 
 const productResolvers = {
   Query: {
@@ -7,7 +7,7 @@ const productResolvers = {
       const doc = await Product.find({});
       // Hvis der er 0 produkter i databasen, så smider den en fejl
       if (doc.length === 0) {
-        throw new Error("Ingen produkter fundet!");
+        throw new Error('Ingen produkter fundet!');
       } else {
         return doc;
       }
@@ -18,6 +18,7 @@ const productResolvers = {
     addProduct: async (parent, product) => {
       const newProduct = await new Product({
         name: product.name,
+        price: product.price,
         sku: product.sku,
         tags: product.tags,
         brand: product.brand,
@@ -26,7 +27,11 @@ const productResolvers = {
         categoryId: product.categoryId,
         subCategoryId: product.subCategoryId
       });
-      return newProduct.save();
+      if (!newProduct) {
+        throw new Error('Produktet kunne ikke oprettes!');
+      } else {
+        return newProduct.save();
+      }
     }
   }
 };
