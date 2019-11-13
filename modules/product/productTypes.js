@@ -1,9 +1,10 @@
-import { gql } from "apollo-server-express";
+import { gql } from 'apollo-server-express';
 
 const productTypeDefs = gql`
   type Product {
     _id: ID
     name: String!
+    price: Float!
     sku: String
     tags: [String]
     brand: String
@@ -20,6 +21,7 @@ const productTypeDefs = gql`
   extend type Mutation {
     addProduct(
       name: String!
+      price: Float!
       sku: String
       tags: [String]
       brand: String

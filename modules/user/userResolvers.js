@@ -1,7 +1,7 @@
-import User from "./models/User";
-import bcryptjs from "bcryptjs";
-import jwt from "jsonwebtoken";
-import config from "config";
+import User from './models/User';
+import bcryptjs from 'bcryptjs';
+import jwt from 'jsonwebtoken';
+import config from 'config';
 
 const userResolvers = {
   Query: {
@@ -10,14 +10,14 @@ const userResolvers = {
       const doc = await User.find({});
       // Hvis der er 0 brugere i databasen, så smider den en fejl
       if (doc.length === 0) {
-        throw new Error("Ingen brugere fundet!");
+        throw new Error('Ingen brugere fundet!');
       } else {
         return doc;
       }
     },
     async me(_, args, { user }) {
       if (!user) {
-        throw new Error("Brugeren findes ikke");
+        throw new Error('Brugeren findes ikke');
       }
       await User.findById(user.id);
     }
@@ -43,7 +43,11 @@ const userResolvers = {
         created: isoDate,
         lastLogin: isoDate
       });
-      return newUser.save();
+      if (!newUser) {
+        throw new Error('Brugeren kunne ikke oprettes!');
+      } else {
+        return newUser.save();
+      }
     },
 
     // Login funktion med jsonwebtoken og bcryptjs
@@ -52,16 +56,16 @@ const userResolvers = {
       var isoDate = new Date(Date.now() - date).toISOString().slice(0, -5);
       try {
         const user = await User.findOne({ mail: args.mail });
-        if (!user) throw new Error("Din mail eller password er forkert");
+        if (!user) throw new Error('Din mail eller password er forkert');
         const passwordIsValid = bcryptjs.compareSync(
           args.password,
           user.password
         );
 
         if (!passwordIsValid)
-          throw new Error("Din mail eller password er forkert");
-        const token = jwt.sign({ id: user._id }, config.get("jwtSecret"), {
-          expiresIn: "1d"
+          throw new Error('Din mail eller password er forkert');
+        const token = jwt.sign({ id: user._id }, config.get('jwtSecret'), {
+          expiresIn: '1d'
         });
 
         const updatedUser = await User.findOneAndUpdate(
@@ -84,7 +88,7 @@ const userResolvers = {
     // Bekræfter token med user._id
     verifyToken: async (root, args, context, info) => {
       try {
-        const decoded = jwt.verify(args.token, config.get("jwtSecret"));
+        const decoded = jwt.verify(args.token, config.get('jwtSecret'));
         const user = await User.findOne({ _id: decoded.id });
         return { ...user._doc, password: null };
       } catch (err) {

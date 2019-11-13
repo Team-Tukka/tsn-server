@@ -1,9 +1,13 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 const ProductSchema = new Schema({
   name: {
     type: String,
     requried: true
+  },
+  price: {
+    type: Number,
+    required: true
   },
   sku: {
     type: String
@@ -29,6 +33,6 @@ const ProductSchema = new Schema({
   }
 });
 
-const Product = model("product", ProductSchema);
+const Product = model('product', ProductSchema);
 
 module.exports = Product;

@@ -1,11 +1,11 @@
 import { gql } from 'apollo-server-express';
 
-const sparepartTypeDef = gql`
+const sparepartTypeDefs = gql`
   type Sparepart {
     _id: ID
     itemNo: String!
     name: String!
-    price: Int!
+    price: Float!
     productId: String
     sparepartCategory: String
   }
@@ -13,6 +13,16 @@ const sparepartTypeDef = gql`
   extend type Query {
     getSpareparts: [Sparepart]
   }
+
+  extend type Mutation {
+    addSparepart(
+      itemNo: String!
+      name: String!
+      price: Float!
+      productId: String
+      sparepartCategory: String
+    ): Sparepart
+  }
 `;
 
-module.exports = sparepartTypeDef;
+module.exports = sparepartTypeDefs;
