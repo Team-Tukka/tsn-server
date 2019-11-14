@@ -19,7 +19,7 @@ const userResolvers = {
       if (!user) {
         throw new Error('Brugeren findes ikke');
       }
-      await User.findById(user.id);
+      return await User.findById(user.id);
     }
   },
   Mutation: {
