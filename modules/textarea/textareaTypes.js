@@ -10,6 +10,7 @@ const textareaTypeDefs = gql`
   }
   extend type Query {
     getTextareas: [Textarea]
+    getTextareaById(_id: ID!): Textarea
   }
   extend type Mutation {
     addTextarea(text: String!): Textarea

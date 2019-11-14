@@ -11,6 +11,10 @@ const textareaResolvers = {
       } else {
         return doc;
       }
+    },
+
+    getTextareaById: async (root, args, context, info) => {
+      return await Textarea.findById(args._id);
     }
   },
   Mutation: {
