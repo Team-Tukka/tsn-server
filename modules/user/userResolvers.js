@@ -5,15 +5,25 @@ import config from 'config';
 
 const userResolvers = {
   Query: {
-    getUsers: async () => await User.find({}),
+    // Query til at hente alle brugere
+    getUsers: async () => {
+      const doc = await User.find({});
+      // Hvis der er 0 brugere i databasen, så smider den en fejl
+      if (doc.length === 0) {
+        throw new Error('Ingen brugere fundet!');
+      } else {
+        return doc;
+      }
+    },
     async me(_, args, { user }) {
       if (!user) {
         throw new Error('Brugeren findes ikke');
       }
-      await User.findById(user.id);
+      return await User.findById(user.id);
     }
   },
   Mutation: {
+    // Mutation til at oprette en ny bruger med iso dato og hash/salt på password
     addUser: async (parent, user) => {
       var date = new Date().getTimezoneOffset() * 60000;
       var isoDate = new Date(Date.now() - date).toISOString().slice(0, -5);
@@ -33,7 +43,14 @@ const userResolvers = {
         created: isoDate,
         lastLogin: isoDate
       });
-      return newUser.save();
+      const checkMail = await User.findOne({ mail: user.mail });
+      if (checkMail) {
+        throw new Error('Mailen er allerede i brug');
+      } else if (!newUser) {
+        throw new Error('Brugeren kunne ikke oprettes!');
+      } else {
+        return newUser.save();
+      }
     },
 
     // Login funktion med jsonwebtoken og bcryptjs

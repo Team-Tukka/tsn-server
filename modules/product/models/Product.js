@@ -1,15 +1,19 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 const ProductSchema = new Schema({
   name: {
     type: String,
     requried: true
   },
+  price: {
+    type: Number,
+    required: true
+  },
   sku: {
     type: String
   },
   tags: {
-    type: String
+    type: [String]
   },
   brand: {
     type: String
@@ -18,7 +22,7 @@ const ProductSchema = new Schema({
     type: String
   },
   itemNo: {
-    type: Number,
+    type: String,
     required: true
   },
   categoryId: {
@@ -29,6 +33,6 @@ const ProductSchema = new Schema({
   }
 });
 
-const Product = model("product", ProductSchema);
+const Product = model('product', ProductSchema);
 
 module.exports = Product;
