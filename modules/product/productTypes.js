@@ -13,6 +13,18 @@ const productTypeDefs = gql`
     categoryId: String
     subCategoryId: String
   }
+  input ProductIn {
+    _id: ID
+    name: String
+    price: Float
+    sku: String
+    tags: [String]
+    brand: String
+    description: String
+    itemNo: String
+    categoryId: String
+    subCategoryId: String
+  }
 
   extend type Query {
     getProducts: [Product]
@@ -30,6 +42,8 @@ const productTypeDefs = gql`
       categoryId: String
       subCategoryId: String
     ): Product
+    updateProductById(_id: ID!, input: ProductIn): Product
+    deleteProductById(_id: ID!): Product
   }
 `;
 module.exports = productTypeDefs;
