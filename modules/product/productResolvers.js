@@ -32,6 +32,12 @@ const productResolvers = {
       } else {
         return newProduct.save();
       }
+    },
+    updateProductById: async (root, { _id, input }) => {
+      return await Product.findOneAndUpdate({ _id }, input, { new: true });
+    },
+    deleteProductById: async (root, args, context, info) => {
+      return await Product.findOneAndDelete({ _id: args._id });
     }
   }
 };
