@@ -7,7 +7,7 @@ const scooterResolvers = {
       const doc = await Scooter.find({});
       // Hvis der er 0 elscootere i databasen, så smider den en fejl
       if (doc.length === 0) {
-        throw new Error('Ingen el-scootere fundet!');
+        throw new Error('Ingen elscootere fundet!');
       } else {
         return doc;
       }
@@ -21,7 +21,7 @@ const scooterResolvers = {
         price: scooter.price,
         priceVAT: (scooter.price * 1.25).toFixed(2),
         sku: scooter.sku,
-        tags: scooter.tags.split(', '),
+        tags: scooter.tags.split(' '),
         brand: scooter.brand,
         description: scooter.description,
         itemNo: scooter.itemNo,
