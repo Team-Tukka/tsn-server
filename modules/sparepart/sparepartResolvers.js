@@ -11,6 +11,14 @@ const sparepartResolvers = {
       } else {
         return doc;
       }
+    },
+    getSparepartById: async (root, args, context, info) => {
+      try {
+        const doc = await Sparepart.findById(args._id);
+        return doc;
+      } catch (error) {
+        throw new Error('Reservedelen findes ikke!');
+      }
     }
   },
   Mutation: {
@@ -22,7 +30,7 @@ const sparepartResolvers = {
         price: sparepart.price,
         priceVAT: (sparepart.price * 1.25).toFixed(2),
         scooterId: sparepart.scooterId,
-        sparepartCategory: sparepart.sparepartCategory
+        categoryId: sparepart.categoryId
       });
       if (!newSparepart) {
         throw new Error('Reservedelen kunne ikke oprettes!');
