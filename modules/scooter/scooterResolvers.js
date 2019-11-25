@@ -2,10 +2,10 @@ import Scooter from './models/Scooter';
 
 const scooterResolvers = {
   Query: {
-    // Query til at hente alle scooter
+    // Query til at hente alle elscooter
     getScooters: async () => {
       const doc = await Scooter.find({});
-      // Hvis der er 0 el-scootere i databasen, så smider den en fejl
+      // Hvis der er 0 elscootere i databasen, så smider den en fejl
       if (doc.length === 0) {
         throw new Error('Ingen el-scootere fundet!');
       } else {
@@ -14,10 +14,8 @@ const scooterResolvers = {
     }
   },
   Mutation: {
-    // Mutation til at oprette en nyt scooter
+    // Mutation til at oprette en ny elscooter
     addScooter: async (parent, scooter) => {
-      // const tagsString = scooter.tags;
-      // const tagsArray = tagsString.split(', ');
       const newScooter = await new Scooter({
         name: scooter.name,
         price: scooter.price,
