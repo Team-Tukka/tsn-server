@@ -1,11 +1,11 @@
 import userResolvers from './user/userResolvers';
-import productResolvers from './product/productResolvers';
+import scooterResolvers from './scooter/scooterResolvers';
 import sparepartResolvers from './sparepart/sparepartResolvers';
 import textareaResolvers from './textarea/textareaResolvers';
 
 const resolvers = [
   userResolvers,
-  productResolvers,
+  scooterResolvers,
   sparepartResolvers,
   textareaResolvers
 ];

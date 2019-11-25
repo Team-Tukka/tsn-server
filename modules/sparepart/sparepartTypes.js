@@ -6,7 +6,8 @@ const sparepartTypeDefs = gql`
     itemNo: String!
     name: String!
     price: Float!
-    productId: String
+    priceVAT: Float
+    scooterId: String
     sparepartCategory: String
   }
 
@@ -19,7 +20,8 @@ const sparepartTypeDefs = gql`
       itemNo: String!
       name: String!
       price: Float!
-      productId: String
+      priceVAT: Float
+      scooterId: String
       sparepartCategory: String
     ): Sparepart
   }
