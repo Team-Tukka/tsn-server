@@ -8,7 +8,7 @@ const sparepartTypeDefs = gql`
     price: Float!
     priceVAT: Float
     scooterId: String
-    sparepartCategory: String
+    categoryId: String
   }
 
   extend type Query {
@@ -23,7 +23,7 @@ const sparepartTypeDefs = gql`
       price: Float!
       priceVAT: Float
       scooterId: String
-      sparepartCategory: String
+      categoryId: String
     ): Sparepart
   }
 `;

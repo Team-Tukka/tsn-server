@@ -20,7 +20,7 @@ const SparepartSchema = new Schema({
   scooterId: {
     type: String
   },
-  sparepartCategory: {
+  categoryId: {
     type: String
   }
 });

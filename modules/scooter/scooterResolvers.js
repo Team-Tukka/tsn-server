@@ -13,7 +13,12 @@ const scooterResolvers = {
       }
     },
     getScooterById: async (root, args, context, info) => {
-      return await Scooter.findById(args._id);
+      try {
+        const doc = await Scooter.findById(args._id);
+        return doc;
+      } catch (error) {
+        throw new Error('Scooteren findes ikke!');
+      }
     }
   },
   Mutation: {

@@ -45,7 +45,7 @@ const userResolvers = {
       });
       const checkMail = await User.findOne({ mail: user.mail });
       if (checkMail) {
-        throw new Error('Mailen er allerede i brug');
+        throw new Error('Mailen er allerede i brug!');
       } else if (!newUser) {
         throw new Error('Brugeren kunne ikke oprettes!');
       } else {
