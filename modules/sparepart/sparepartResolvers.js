@@ -20,7 +20,8 @@ const sparepartResolvers = {
         itemNo: sparepart.itemNo,
         name: sparepart.name,
         price: sparepart.price,
-        productId: sparepart.productId,
+        priceVAT: (sparepart.price * 1.25).toFixed(2),
+        scooterId: sparepart.scooterId,
         sparepartCategory: sparepart.sparepartCategory
       });
       if (!newSparepart) {

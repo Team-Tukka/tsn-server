@@ -1,10 +1,11 @@
 import { gql } from 'apollo-server-express';
 
-const productTypeDefs = gql`
-  type Product {
+const ScooterTypeDefs = gql`
+  type Scooter {
     _id: ID
     name: String!
     price: Float!
+    priceVAT: Float
     sku: String
     tags: [String]
     brand: String
@@ -13,12 +14,13 @@ const productTypeDefs = gql`
     categoryId: String
     subCategoryId: String
   }
-  input ProductIn {
+  input ScooterIn {
     _id: ID
     name: String
     price: Float
+    priceVAT: Float
     sku: String
-    tags: [String]
+    tags: String
     brand: String
     description: String
     itemNo: String
@@ -27,23 +29,23 @@ const productTypeDefs = gql`
   }
 
   extend type Query {
-    getProducts: [Product]
+    getScooters: [Scooter]
   }
 
   extend type Mutation {
-    addProduct(
+    addScooter(
       name: String!
       price: Float!
       sku: String
-      tags: [String]
+      tags: String
       brand: String
       description: String
       itemNo: String!
       categoryId: String
       subCategoryId: String
-    ): Product
-    updateProductById(_id: ID!, input: ProductIn): Product
-    deleteProductById(_id: ID!): Product
+    ): Scooter
+    updateScooterById(_id: ID!, input: ScooterIn): Scooter
+    deleteScooterById(_id: ID!): Scooter
   }
 `;
-module.exports = productTypeDefs;
+module.exports = ScooterTypeDefs;
