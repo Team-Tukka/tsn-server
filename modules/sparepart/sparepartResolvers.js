@@ -11,6 +11,9 @@ const sparepartResolvers = {
       } else {
         return doc;
       }
+    },
+    getSparepartById: async (root, args, context, info) => {
+      return await Sparepart.findById(args._id);
     }
   },
   Mutation: {

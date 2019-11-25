@@ -30,6 +30,7 @@ const ScooterTypeDefs = gql`
 
   extend type Query {
     getScooters: [Scooter]
+    getScooterById(_id: ID!): Scooter
   }
 
   extend type Mutation {

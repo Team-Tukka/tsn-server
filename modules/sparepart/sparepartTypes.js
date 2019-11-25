@@ -13,6 +13,7 @@ const sparepartTypeDefs = gql`
 
   extend type Query {
     getSpareparts: [Sparepart]
+    getSparepartById(_id: ID!): Sparepart
   }
 
   extend type Mutation {

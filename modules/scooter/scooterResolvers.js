@@ -11,6 +11,9 @@ const scooterResolvers = {
       } else {
         return doc;
       }
+    },
+    getScooterById: async (root, args, context, info) => {
+      return await Scooter.findById(args._id);
     }
   },
   Mutation: {
@@ -39,7 +42,7 @@ const scooterResolvers = {
         input.priceVAT = input.price * 1.25;
       }
       if (input.tags) {
-        input.tags = input.tags.split(', ');
+        input.tags = input.tags.split(' ');
       }
       return await Scooter.findOneAndUpdate({ _id }, input, { new: true });
     },
