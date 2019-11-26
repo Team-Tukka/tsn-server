@@ -10,6 +10,13 @@ const sparepartTypeDefs = gql`
     scooterId: String
     categoryId: String
   }
+  input SparepartIn {
+    itemNo: String
+    name: String
+    price: Float
+    scooterId: String
+    categoryId: String
+  }
 
   extend type Query {
     getSpareparts: [Sparepart]
@@ -25,6 +32,8 @@ const sparepartTypeDefs = gql`
       scooterId: String
       categoryId: String
     ): Sparepart
+    updateSparepartById(_id: ID!, input: SparepartIn): Sparepart
+    deleteSparepartById(_id: ID!): Sparepart
   }
 `;
 

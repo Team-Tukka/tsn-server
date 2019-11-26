@@ -42,17 +42,27 @@ const scooterResolvers = {
         return newScooter.save();
       }
     },
+    //Mutation til at opdatere en elscooter ud fra dets id.
     updateScooterById: async (root, { _id, input }) => {
-      if (input.price) {
-        input.priceVAT = input.price * 1.25;
+      try {
+        if (input.price) {
+          input.priceVAT = input.price * 1.25;
+        }
+        if (input.tags) {
+          input.tags = input.tags.split(' ');
+        }
+        return await Scooter.findOneAndUpdate({ _id }, input, { new: true });
+      } catch (error) {
+        throw new Error('Der skete en fejl...');
       }
-      if (input.tags) {
-        input.tags = input.tags.split(' ');
-      }
-      return await Scooter.findOneAndUpdate({ _id }, input, { new: true });
     },
+    //Mutation til at slette en elscooter ud fra dets id.
     deleteScooterById: async (root, args, context, info) => {
-      return await Scooter.findOneAndDelete({ _id: args._id });
+      try {
+        return await Scooter.findOneAndDelete({ _id: args._id });
+      } catch (error) {
+        throw new Error('Der skete en fejl...');
+      }
     }
   }
 };
