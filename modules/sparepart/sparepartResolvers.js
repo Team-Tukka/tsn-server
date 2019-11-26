@@ -21,7 +21,7 @@ const sparepartResolvers = {
     }
   },
   Mutation: {
-    // Mutation til at oprette en ny reservedele
+    // Mutation til at oprette en ny reservedel
     addSparepart: async (parent, sparepart) => {
       const newSparepart = await new Sparepart({
         itemNo: sparepart.itemNo,
@@ -36,7 +36,7 @@ const sparepartResolvers = {
       }
       return newSparepart.save();
     },
-    //Mutation til at opdatere en reservedel ud fra dets id.
+    // Mutation til at opdatere en reservedel ud fra dens id
     updateSparepartById: async (root, { _id, input }) => {
       try {
         if (input.price) {
@@ -47,7 +47,7 @@ const sparepartResolvers = {
         throw new Error('Der skete en fejl...');
       }
     },
-    //Mutation til at slette en reservedel ud fra dets id.
+    // Mutation til at slette en reservedel ud fra dens id
     deleteSparepartById: async (root, args, context, info) => {
       try {
         return await Sparepart.findOneAndDelete({ _id: args._id });
