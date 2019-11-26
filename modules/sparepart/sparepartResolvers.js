@@ -14,15 +14,14 @@ const sparepartResolvers = {
     },
     getSparepartById: async (root, args, context, info) => {
       try {
-        const doc = await Sparepart.findById(args._id);
-        return doc;
+        return await Sparepart.findById(args._id);
       } catch (error) {
         throw new Error('Reservedelen findes ikke!');
       }
     }
   },
   Mutation: {
-    // Mutation til at oprette en ny reservedele
+    // Mutation til at oprette en ny reservedel
     addSparepart: async (parent, sparepart) => {
       const newSparepart = await new Sparepart({
         itemNo: sparepart.itemNo,
@@ -36,6 +35,25 @@ const sparepartResolvers = {
         throw new Error('Reservedelen kunne ikke oprettes!');
       }
       return newSparepart.save();
+    },
+    // Mutation til at opdatere en reservedel ud fra dens id
+    updateSparepartById: async (root, { _id, input }) => {
+      try {
+        if (input.price) {
+          input.priceVAT = input.price * 1.25;
+        }
+        return await Sparepart.findOneAndUpdate({ _id }, input, { new: true });
+      } catch (error) {
+        throw new Error('Der skete en fejl...');
+      }
+    },
+    // Mutation til at slette en reservedel ud fra dens id
+    deleteSparepartById: async (root, args, context, info) => {
+      try {
+        return await Sparepart.findOneAndDelete({ _id: args._id });
+      } catch (error) {
+        throw new Error('Der skete en fejl...');
+      }
     }
   }
 };
