@@ -2,7 +2,7 @@ import Scooter from './models/Scooter';
 
 const scooterResolvers = {
   Query: {
-    // Query til at hente alle elscooter
+    // Query til at hente alle elscootere
     getScooters: async () => {
       const doc = await Scooter.find({});
       // Hvis der er 0 elscootere i databasen, så smider den en fejl
@@ -17,7 +17,7 @@ const scooterResolvers = {
         const doc = await Scooter.findById(args._id);
         return doc;
       } catch (error) {
-        throw new Error('Scooteren findes ikke!');
+        throw new Error('Elscooteren findes ikke!');
       }
     }
   },
@@ -37,12 +37,12 @@ const scooterResolvers = {
         subCategoryId: scooter.subCategoryId
       });
       if (!newScooter) {
-        throw new Error('Scooteren kunne ikke oprettes!');
+        throw new Error('Elscooteren kunne ikke oprettes!');
       } else {
         return newScooter.save();
       }
     },
-    //Mutation til at opdatere en elscooter ud fra dets id.
+    // Mutation til at opdatere en elscooter ud fra dens id
     updateScooterById: async (root, { _id, input }) => {
       try {
         if (input.price) {
@@ -56,7 +56,7 @@ const scooterResolvers = {
         throw new Error('Der skete en fejl...');
       }
     },
-    //Mutation til at slette en elscooter ud fra dets id.
+    // Mutation til at slette en elscooter ud fra dens id
     deleteScooterById: async (root, args, context, info) => {
       try {
         return await Scooter.findOneAndDelete({ _id: args._id });
