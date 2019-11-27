@@ -12,7 +12,7 @@ const scooterResolvers = {
         return doc;
       }
     },
-    getScooterById: async (root, args, context, info) => {
+    getScooterById: async (_, args) => {
       try {
         const doc = await Scooter.findById(args._id);
         return doc;
@@ -23,7 +23,7 @@ const scooterResolvers = {
   },
   Mutation: {
     // Mutation til at oprette en ny elscooter
-    addScooter: async (parent, scooter) => {
+    addScooter: async (_, scooter) => {
       const newScooter = await new Scooter({
         name: scooter.name,
         price: scooter.price,
@@ -43,7 +43,7 @@ const scooterResolvers = {
       }
     },
     // Mutation til at opdatere en elscooter ud fra dens id
-    updateScooterById: async (root, { _id, input }) => {
+    updateScooterById: async (_, { _id, input }) => {
       try {
         if (input.price) {
           input.priceVAT = input.price * 1.25;
@@ -57,7 +57,7 @@ const scooterResolvers = {
       }
     },
     // Mutation til at slette en elscooter ud fra dens id
-    deleteScooterById: async (root, args, context, info) => {
+    deleteScooterById: async (_, args) => {
       try {
         return await Scooter.findOneAndDelete({ _id: args._id });
       } catch (error) {

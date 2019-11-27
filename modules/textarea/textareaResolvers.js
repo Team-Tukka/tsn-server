@@ -12,14 +12,14 @@ const textareaResolvers = {
         return doc;
       }
     },
-
-    getTextareaById: async (root, args, context, info) => {
+    //Query til at hente ét tekstfelt ud fra dets id.
+    getTextareaById: async (_, args) => {
       return await Textarea.findById(args._id);
     }
   },
   Mutation: {
     // Mutation til at oprette et nyt produkt
-    addTextarea: async (parent, textarea) => {
+    addTextarea: async (_, textarea) => {
       const newTextarea = await new Textarea({
         text: textarea.text
       });
@@ -30,7 +30,7 @@ const textareaResolvers = {
       }
     },
     // Mutation til at opdatere et tekstfelt efter id
-    updateTextareaById: async (root, { _id, input }) => {
+    updateTextareaById: async (_, { _id, input }) => {
       //Hvis man ikke indtaster den nye tekst, så smides en fejl
       if (!input) {
         throw new Error('Fejl i opdateret tekst!');
