@@ -12,7 +12,7 @@ const sparepartResolvers = {
         return doc;
       }
     },
-    getSparepartById: async (root, args, context, info) => {
+    getSparepartById: async (_, args) => {
       try {
         return await Sparepart.findById(args._id);
       } catch (error) {
@@ -22,7 +22,7 @@ const sparepartResolvers = {
   },
   Mutation: {
     // Mutation til at oprette en ny reservedel
-    addSparepart: async (parent, sparepart) => {
+    addSparepart: async (_, sparepart) => {
       const newSparepart = await new Sparepart({
         itemNo: sparepart.itemNo,
         name: sparepart.name,
@@ -37,7 +37,7 @@ const sparepartResolvers = {
       return newSparepart.save();
     },
     // Mutation til at opdatere en reservedel ud fra dens id
-    updateSparepartById: async (root, { _id, input }) => {
+    updateSparepartById: async (_, { _id, input }) => {
       try {
         if (input.price) {
           input.priceVAT = input.price * 1.25;
@@ -48,7 +48,7 @@ const sparepartResolvers = {
       }
     },
     // Mutation til at slette en reservedel ud fra dens id
-    deleteSparepartById: async (root, args, context, info) => {
+    deleteSparepartById: async (_, args) => {
       try {
         return await Sparepart.findOneAndDelete({ _id: args._id });
       } catch (error) {
