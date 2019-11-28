@@ -30,10 +30,12 @@ const ScooterSchema = new Schema({
     required: true
   },
   categoryId: {
-    type: String
+    type: String,
+    default: ''
   },
   subCategoryId: {
-    type: String
+    type: String,
+    default: ''
   }
 });
 

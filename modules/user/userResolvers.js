@@ -15,7 +15,7 @@ const userResolvers = {
         return doc;
       }
     },
-    async me(_, { user }) {
+    async me(_, args, { user }) {
       if (!user) {
         throw new Error('Brugeren findes ikke');
       }
