@@ -14,7 +14,12 @@ const scooterResolvers = {
     },
     getScooterById: async (_, args) => {
       try {
+        var docTags = '';
         const doc = await Scooter.findById(args._id);
+        for (let i = 0; i < doc.tags.length; i++) {
+          docTags = doc.tags[i].replace(/,/g, ' ');
+        }
+        doc.tags = docTags;
         return doc;
       } catch (error) {
         throw new Error('Elscooteren findes ikke!');
