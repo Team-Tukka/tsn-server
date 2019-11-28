@@ -18,12 +18,10 @@ const SparepartSchema = new Schema({
     required: true
   },
   scooterId: {
-    type: String,
-    default: ''
+    type: String
   },
   categoryId: {
-    type: String,
-    default: ''
+    type: String
   }
 });
 
