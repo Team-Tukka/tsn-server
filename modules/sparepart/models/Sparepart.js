@@ -19,11 +19,11 @@ const SparepartSchema = new Schema({
   },
   scooterId: {
     type: String,
-    defalut: ''
+    default: ''
   },
   categoryId: {
     type: String,
-    defalut: ''
+    default: ''
   }
 });
 
