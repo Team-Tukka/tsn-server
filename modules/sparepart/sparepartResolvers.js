@@ -40,7 +40,7 @@ const sparepartResolvers = {
     updateSparepartById: async (_, { _id, input }) => {
       try {
         if (input.price) {
-          input.priceVAT = input.price * 1.25;
+          input.priceVAT = (input.price * 1.25).toFixed(2);
         }
         return await Sparepart.findOneAndUpdate({ _id }, input, { new: true });
       } catch (error) {
