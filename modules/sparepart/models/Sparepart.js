@@ -13,10 +13,14 @@ const SparepartSchema = new Schema({
     type: Number,
     required: true
   },
-  productId: {
+  priceVAT: {
+    type: Number,
+    required: true
+  },
+  scooterId: {
     type: String
   },
-  sparepartCategory: {
+  categoryId: {
     type: String
   }
 });

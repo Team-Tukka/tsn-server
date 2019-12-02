@@ -24,7 +24,7 @@ const userResolvers = {
   },
   Mutation: {
     // Mutation til at oprette en ny bruger med iso dato og hash/salt på password
-    addUser: async (parent, user) => {
+    addUser: async (_, user) => {
       var date = new Date().getTimezoneOffset() * 60000;
       var isoDate = new Date(Date.now() - date).toISOString().slice(0, -5);
       const salt = await bcryptjs.genSalt(10);
@@ -45,7 +45,7 @@ const userResolvers = {
       });
       const checkMail = await User.findOne({ mail: user.mail });
       if (checkMail) {
-        throw new Error('Mailen er allerede i brug');
+        throw new Error('Mailen er allerede i brug!');
       } else if (!newUser) {
         throw new Error('Brugeren kunne ikke oprettes!');
       } else {
@@ -89,7 +89,7 @@ const userResolvers = {
     },
 
     // Bekræfter token med user._id
-    verifyToken: async (root, args, context, info) => {
+    verifyToken: async (_, args) => {
       try {
         const decoded = jwt.verify(args.token, config.get('jwtSecret'));
         const user = await User.findOne({ _id: decoded.id });
