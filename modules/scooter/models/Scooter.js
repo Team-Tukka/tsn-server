@@ -1,11 +1,15 @@
 import { Schema, model } from 'mongoose';
 
-const ProductSchema = new Schema({
+const ScooterSchema = new Schema({
   name: {
     type: String,
     requried: true
   },
   price: {
+    type: Number,
+    required: true
+  },
+  priceVAT: {
     type: Number,
     required: true
   },
@@ -33,6 +37,6 @@ const ProductSchema = new Schema({
   }
 });
 
-const Product = model('product', ProductSchema);
+const Scooter = model('scooter', ScooterSchema);
 
-module.exports = Product;
+module.exports = Scooter;
