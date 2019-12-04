@@ -36,4 +36,5 @@ const MailTypeDefs = gql`
     deleteMailById(_id: ID!): Mail
   }
 `;
+
 module.exports = MailTypeDefs;
