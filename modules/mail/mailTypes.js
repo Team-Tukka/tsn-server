@@ -7,7 +7,7 @@ const MailTypeDefs = gql`
     lastName: String!
     title: String!
     email: String!
-    number: Int
+    phone: Int
     message: String!
   }
   input MailIn {
@@ -16,7 +16,7 @@ const MailTypeDefs = gql`
     lastName: String!
     title: String!
     email: String!
-    number: Int
+    phone: Int
     message: String!
   }
 
@@ -30,7 +30,7 @@ const MailTypeDefs = gql`
       lastName: String!
       title: String!
       email: String!
-      number: Int
+      phone: Int
       message: String!
     ): Mail
     deleteMailById(_id: ID!): Mail
