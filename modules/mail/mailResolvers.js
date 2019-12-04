@@ -5,7 +5,7 @@ const mailResolvers = {
     // Query til at hente alle mails
     getMails: async () => {
       const doc = await Mail.find({});
-      // Hvis den ingen mails finder i systemer, angives der en fejl
+      // Hvis den ingen mails finder i systemet, angives der en fejl
       if (doc.length === 0) {
         throw new Error('Ingen mails fundet!');
       } else {
