@@ -17,7 +17,7 @@ const MailSchema = new Schema({
     type: String,
     requried: true
   },
-  number: {
+  phone: {
     type: Number
   },
   message: {
