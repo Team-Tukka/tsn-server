@@ -21,7 +21,7 @@ const mailResolvers = {
         lastName: mail.lastName,
         title: mail.title,
         email: mail.email,
-        number: mail.number,
+        phone: mail.phone,
         message: mail.message
       });
       if (!newMail) {
@@ -40,4 +40,5 @@ const mailResolvers = {
     }
   }
 };
+
 module.exports = mailResolvers;
