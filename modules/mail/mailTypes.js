@@ -22,6 +22,7 @@ const MailTypeDefs = gql`
 
   extend type Query {
     getMails: [Mail]
+    getMailById(_id: ID!): Mail
   }
 
   extend type Mutation {

@@ -11,6 +11,14 @@ const mailResolvers = {
       } else {
         return doc;
       }
+    },
+    // Resolver som henter en specifik mail ud fra _id-argumentet
+    getMailById: async (_, args) => {
+      try {
+        return await Mail.findById(args._id);
+      } catch (error) {
+        throw new Error('Mailen findes ikke...');
+      }
     }
   },
   Mutation: {
