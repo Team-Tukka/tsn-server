@@ -35,6 +35,7 @@ const scooterResolvers = {
         priceVAT: (scooter.price * 1.25).toFixed(2),
         sku: scooter.sku,
         tags: scooter.tags.split(' '),
+        tagsArray: scooter.tags.split(' '),
         brand: scooter.brand,
         description: scooter.description,
         itemNo: scooter.itemNo,

@@ -8,6 +8,7 @@ const ScooterTypeDefs = gql`
     priceVAT: Float
     sku: String
     tags: [String]
+    tagsArray: [String]
     brand: String
     description: String
     itemNo: String!
