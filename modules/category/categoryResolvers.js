@@ -28,7 +28,7 @@ const categoryResolvers = {
         name: category.name
       });
       if (!newCategory) {
-        throw new Error('Beskeden kunne ikke sendes');
+        throw new Error('Kategorien kunne ikke oprettes');
       } else {
         return newCategory.save();
       }
