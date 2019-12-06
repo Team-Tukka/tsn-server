@@ -4,6 +4,7 @@ import scooterTypeDefs from './scooter/scooterTypes';
 import sparepartTypeDefs from './sparepart/sparepartTypes';
 import textareaTypeDefs from './textarea/textareaTypes';
 import mailTypeDefs from './mail/mailTypes';
+import categoryTypeDefs from './category/categoryTypes';
 
 const linkSchema = gql`
   type Query {
@@ -25,7 +26,8 @@ const typeDefs = [
   scooterTypeDefs,
   sparepartTypeDefs,
   textareaTypeDefs,
-  mailTypeDefs
+  mailTypeDefs,
+  categoryTypeDefs
 ];
 
 module.exports = typeDefs;
