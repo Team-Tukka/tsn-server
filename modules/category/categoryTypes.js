@@ -8,10 +8,14 @@ const CategoryTypeDefs = gql`
   input CategoryIn {
     name: String
   }
+  input CategoryInForId {
+    _id: ID!
+  }
 
   extend type Query {
     getCategories: [Category]
     getCategoryById(_id: ID!): Category
+    getCategoriesById(input: [CategoryInForId]): [Category]
   }
 
   extend type Mutation {

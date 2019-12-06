@@ -19,6 +19,14 @@ const categoryResolvers = {
       } catch (error) {
         throw new Error('Kategorien findes ikke...');
       }
+    },
+    // Resolver som tager imod et array af _id-felter og henter dokumentet for id'erne
+    getCategoriesById: async (_, args) => {
+      try {
+        return await Category.find({ _id: { $in: args.input } });
+      } catch (error) {
+        throw new Error('Kategorierne findes ikke...');
+      }
     }
   },
   Mutation: {
