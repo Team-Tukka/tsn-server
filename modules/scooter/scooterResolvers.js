@@ -17,7 +17,7 @@ const scooterResolvers = {
         var docTags = '';
         const doc = await Scooter.findById(args._id);
         for (let i = 0; i < doc.tags.length; i++) {
-          docTags = doc.tags[i].replace(/,/g, ' ');
+          docTags += doc.tags[i].replace(/,/g, ' ') + ' ';
         }
         doc.tags = docTags;
         return doc;
