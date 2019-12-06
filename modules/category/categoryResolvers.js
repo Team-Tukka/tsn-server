@@ -41,7 +41,7 @@ const categoryResolvers = {
         throw new Error('Der skete en fejl...');
       }
     },
-    // Mutation til at slette en mail ud fra dens id
+    // Mutation til at slette en kategori ud fra dens id
     deleteCategoryById: async (_, args) => {
       try {
         return await Category.findOneAndDelete({ _id: args._id });
