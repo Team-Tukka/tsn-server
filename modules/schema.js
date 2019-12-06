@@ -5,6 +5,7 @@ import sparepartTypeDefs from './sparepart/sparepartTypes';
 import textareaTypeDefs from './textarea/textareaTypes';
 import mailTypeDefs from './mail/mailTypes';
 import categoryTypeDefs from './category/categoryTypes';
+import subCategoryTypeDefs from './subCategory/subCategoryTypes';
 
 const linkSchema = gql`
   type Query {
@@ -27,7 +28,8 @@ const typeDefs = [
   sparepartTypeDefs,
   textareaTypeDefs,
   mailTypeDefs,
-  categoryTypeDefs
+  categoryTypeDefs,
+  subCategoryTypeDefs
 ];
 
 module.exports = typeDefs;

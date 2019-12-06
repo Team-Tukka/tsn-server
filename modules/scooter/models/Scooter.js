@@ -31,9 +31,6 @@ const ScooterSchema = new Schema({
   },
   categoryId: {
     type: String
-  },
-  subCategoryId: {
-    type: String
   }
 });
 

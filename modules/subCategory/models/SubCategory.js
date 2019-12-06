@@ -1,4 +1,4 @@
-import { Schema, model } from "mongoose";
+import { Schema, model } from 'mongoose';
 
 const SubCategorySchema = new Schema({
   name: {
@@ -7,9 +7,12 @@ const SubCategorySchema = new Schema({
   },
   categoryId: {
     type: String
+  },
+  imagePath: {
+    type: String
   }
 });
 
-const SubCategory = model("subCategory", SubCategorySchema);
+const SubCategory = model('subCategory', SubCategorySchema);
 
 module.exports = SubCategory;

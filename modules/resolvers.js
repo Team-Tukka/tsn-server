@@ -4,6 +4,7 @@ import sparepartResolvers from './sparepart/sparepartResolvers';
 import textareaResolvers from './textarea/textareaResolvers';
 import mailResolvers from './mail/mailResolvers';
 import categoryResolvers from './category/categoryResolvers';
+import subCategoryResolvers from './subCategory/subCategoryResolvers';
 
 const resolvers = [
   userResolvers,
@@ -11,6 +12,7 @@ const resolvers = [
   sparepartResolvers,
   textareaResolvers,
   mailResolvers,
-  categoryResolvers
+  categoryResolvers,
+  subCategoryResolvers
 ];
 module.exports = resolvers;
