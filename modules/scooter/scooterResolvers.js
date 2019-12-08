@@ -17,7 +17,7 @@ const scooterResolvers = {
         var docTags = '';
         const doc = await Scooter.findById(args._id);
         for (let i = 0; i < doc.tags.length; i++) {
-          docTags = doc.tags[i].replace(/,/g, ' ');
+          docTags += doc.tags[i].replace(/,/g, ' ') + ' ';
         }
         doc.tags = docTags;
         return doc;
@@ -35,6 +35,7 @@ const scooterResolvers = {
         priceVAT: (scooter.price * 1.25).toFixed(2),
         sku: scooter.sku,
         tags: scooter.tags.split(' '),
+        tagsArray: scooter.tags.split(' '),
         brand: scooter.brand,
         description: scooter.description,
         itemNo: scooter.itemNo,

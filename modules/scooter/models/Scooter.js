@@ -19,6 +19,9 @@ const ScooterSchema = new Schema({
   tags: {
     type: [String]
   },
+  tagsArray: {
+    type: [String]
+  },
   brand: {
     type: String
   },
