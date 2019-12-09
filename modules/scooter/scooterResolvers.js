@@ -55,8 +55,8 @@ const scooterResolvers = {
           input.priceVAT = (input.price * 1.25).toFixed(2);
         }
         if (input.tags) {
-          input.tagsArray = input.tags;
           input.tags = input.tags.split(' ');
+          input.tagsArray = input.tags;
         }
         return await Scooter.findOneAndUpdate({ _id }, input, { new: true });
       } catch (error) {
