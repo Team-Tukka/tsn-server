@@ -18,6 +18,15 @@ const sparepartResolvers = {
       } catch (error) {
         throw new Error('Reservedelen findes ikke!');
       }
+    },
+    getSparepartsBySubCategory: async (_, args) => {
+      try {
+        return await Sparepart.find({ subCategoryId: args.subCategoryId });
+      } catch (error) {
+        throw new Error(
+          'Der findes ingen reservedelen under denne kategori...'
+        );
+      }
     }
   },
   Mutation: {
@@ -28,8 +37,8 @@ const sparepartResolvers = {
         name: sparepart.name,
         price: sparepart.price,
         priceVAT: (sparepart.price * 1.25).toFixed(2),
-        scooterId: sparepart.scooterId,
-        categoryId: sparepart.categoryId
+        categoryId: sparepart.categoryId,
+        subCategoryId: sparepart.subCategoryId
       });
       if (!newSparepart) {
         throw new Error('Reservedelen kunne ikke oprettes!');

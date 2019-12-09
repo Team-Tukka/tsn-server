@@ -7,20 +7,21 @@ const sparepartTypeDefs = gql`
     name: String!
     price: Float!
     priceVAT: Float
-    scooterId: String
     categoryId: String
+    subCategoryId: String
   }
   input SparepartIn {
     itemNo: String
     name: String
     price: Float
-    scooterId: String
     categoryId: String
+    subCategoryId: String
   }
 
   extend type Query {
     getSpareparts: [Sparepart]
     getSparepartById(_id: ID!): Sparepart
+    getSparepartsBySubCategory(subCategoryId: String!): [Sparepart]
   }
 
   extend type Mutation {
@@ -29,8 +30,8 @@ const sparepartTypeDefs = gql`
       name: String!
       price: Float!
       priceVAT: Float
-      scooterId: String
       categoryId: String
+      subCategoryId: String
     ): Sparepart
     updateSparepartById(_id: ID!, input: SparepartIn): Sparepart
     deleteSparepartById(_id: ID!): Sparepart

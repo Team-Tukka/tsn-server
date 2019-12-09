@@ -1,6 +1,6 @@
 import { gql } from 'apollo-server-express';
 
-const CategoryTypeDefs = gql`
+const categoryTypeDefs = gql`
   type Category {
     _id: ID
     name: String!
@@ -25,4 +25,4 @@ const CategoryTypeDefs = gql`
   }
 `;
 
-module.exports = CategoryTypeDefs;
+module.exports = categoryTypeDefs;
