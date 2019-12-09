@@ -18,7 +18,7 @@ const subCategoryTypeDefs = gql`
     getSubCategories: [SubCategory]
     getSubCategoryById(_id: ID!): SubCategory
     getSubCategoriesByIds(input: [SubCategoryInForId]): [SubCategory]
-    getSubCategoriesByCategoryId(_id: ID!): [SubCategory]
+    getSubCategoriesByCategoryId(categoryId: String!): [SubCategory]
   }
 
   extend type Mutation {

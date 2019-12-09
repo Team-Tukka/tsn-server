@@ -30,7 +30,7 @@ const subCategoryResolvers = {
     },
     getSubCategoriesByCategoryId: async (_, args) => {
       try {
-        return await SubCategory.find({ categoryId: args });
+        return await SubCategory.find({ categoryId: args.categoryId });
       } catch (error) {
         throw new Error('Underkategorierne kunne ikke findes...');
       }
