@@ -39,8 +39,7 @@ const scooterResolvers = {
         brand: scooter.brand,
         description: scooter.description,
         itemNo: scooter.itemNo,
-        categoryId: scooter.categoryId,
-        subCategoryId: scooter.subCategoryId
+        categoryId: scooter.categoryId
       });
       if (!newScooter) {
         throw new Error('Elscooteren kunne ikke oprettes!');
