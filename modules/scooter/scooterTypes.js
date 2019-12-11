@@ -13,7 +13,6 @@ const ScooterTypeDefs = gql`
     description: String
     itemNo: String!
     categoryId: String
-    subCategoryId: String
   }
   input ScooterIn {
     _id: ID
@@ -26,7 +25,6 @@ const ScooterTypeDefs = gql`
     description: String
     itemNo: String
     categoryId: String
-    subCategoryId: String
   }
 
   extend type Query {
@@ -44,7 +42,6 @@ const ScooterTypeDefs = gql`
       description: String
       itemNo: String!
       categoryId: String
-      subCategoryId: String
     ): Scooter
     updateScooterById(_id: ID!, input: ScooterIn): Scooter
     deleteScooterById(_id: ID!): Scooter
