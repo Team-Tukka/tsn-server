@@ -9,6 +9,8 @@ const subCategoryTypeDefs = gql`
   }
   input SubCategoryIn {
     name: String
+    categoryId: String!
+    imagePath: String
   }
   input SubCategoryInForId {
     _id: ID!
