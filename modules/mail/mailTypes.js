@@ -9,6 +9,7 @@ const MailTypeDefs = gql`
     email: String!
     phone: Int
     message: String!
+    created: String
   }
   input MailIn {
     _id: ID

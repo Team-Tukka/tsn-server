@@ -24,13 +24,16 @@ const mailResolvers = {
   Mutation: {
     // Mutation til at oprette en ny mail
     addMail: async (_, mail) => {
+      var date = new Date().getTimezoneOffset() * 60000;
+      var isoDate = new Date(Date.now() - date).toTimeString().slice(0, -5);
       const newMail = await new Mail({
         firstName: mail.firstName,
         lastName: mail.lastName,
         title: mail.title,
         email: mail.email,
         phone: mail.phone,
-        message: mail.message
+        message: mail.message,
+        created: isoDate
       });
       if (!newMail) {
         throw new Error('Beskeden kunne ikke sendes');

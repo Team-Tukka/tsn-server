@@ -23,6 +23,10 @@ const MailSchema = new Schema({
   message: {
     type: String,
     required: true
+  },
+  created: {
+    type: String,
+    required: true
   }
 });
 
