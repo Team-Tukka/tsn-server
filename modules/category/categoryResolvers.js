@@ -52,7 +52,6 @@ const categoryResolvers = {
     // Mutation til at slette en kategori ud fra dens id
     // To kategorier er dog sikret mod at blive slettet
     deleteCategoryById: async (_, args) => {
-      console.log(args._id);
       try {
         if (
           args._id === '5df34ec47d346542bc0d34db' ||
