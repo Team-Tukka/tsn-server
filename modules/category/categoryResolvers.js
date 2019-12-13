@@ -49,12 +49,20 @@ const categoryResolvers = {
         throw new Error('Der skete en fejl...');
       }
     },
-    // Mutation til at slette en kategori ud fra dens id
+    /* Mutation til at slette en kategori ud fra dens id.
+    To kategorier er dog sikret mod at blive slettet */
     deleteCategoryById: async (_, args) => {
       try {
-        return await Category.findOneAndDelete({ _id: args._id });
+        if (
+          args._id === '5df34ec47d346542bc0d34db' ||
+          args._id === '5dea20b6452dd0511c74b87e'
+        ) {
+          throw new Error('Denne kategori kan ikke slettes.');
+        } else {
+          return await Category.findOneAndDelete({ _id: args._id });
+        }
       } catch (error) {
-        throw new Error('Der skete en fejl...');
+        throw new Error(error.message);
       }
     }
   }
