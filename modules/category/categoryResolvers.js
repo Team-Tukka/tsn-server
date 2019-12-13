@@ -49,8 +49,8 @@ const categoryResolvers = {
         throw new Error('Der skete en fejl...');
       }
     },
-    // Mutation til at slette en kategori ud fra dens id
-    // To kategorier er dog sikret mod at blive slettet
+    /* Mutation til at slette en kategori ud fra dens id.
+    To kategorier er dog sikret mod at blive slettet */
     deleteCategoryById: async (_, args) => {
       try {
         if (
