@@ -13,7 +13,7 @@ const ScooterTypeDefs = gql`
     description: String
     itemNo: String!
     categoryId: String
-    imagePath: String!
+    imagePath: String
   }
   input ScooterIn {
     _id: ID
