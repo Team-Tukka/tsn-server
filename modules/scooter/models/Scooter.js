@@ -34,6 +34,10 @@ const ScooterSchema = new Schema({
   },
   categoryId: {
     type: String
+  },
+  imagePath: {
+    type: String,
+    required: true
   }
 });
 

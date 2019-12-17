@@ -13,6 +13,7 @@ const ScooterTypeDefs = gql`
     description: String
     itemNo: String!
     categoryId: String
+    imagePath: String
   }
   input ScooterIn {
     _id: ID
@@ -25,6 +26,7 @@ const ScooterTypeDefs = gql`
     description: String
     itemNo: String
     categoryId: String
+    imagePath: String!
   }
 
   extend type Query {
@@ -42,6 +44,7 @@ const ScooterTypeDefs = gql`
       description: String
       itemNo: String!
       categoryId: String
+      imagePath: String!
     ): Scooter
     updateScooterById(_id: ID!, input: ScooterIn): Scooter
     deleteScooterById(_id: ID!): Scooter
