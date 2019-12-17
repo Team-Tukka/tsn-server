@@ -36,7 +36,8 @@ const ScooterSchema = new Schema({
     type: String
   },
   imagePath: {
-    type: String
+    type: String,
+    required: true
   }
 });
 
