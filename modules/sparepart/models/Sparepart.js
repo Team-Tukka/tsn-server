@@ -17,10 +17,10 @@ const SparepartSchema = new Schema({
     type: Number,
     required: true
   },
-  scooterId: {
+  categoryId: {
     type: String
   },
-  categoryId: {
+  subCategoryId: {
     type: String
   }
 });

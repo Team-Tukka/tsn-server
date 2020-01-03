@@ -19,6 +19,9 @@ const ScooterSchema = new Schema({
   tags: {
     type: [String]
   },
+  tagsArray: {
+    type: [String]
+  },
   brand: {
     type: String
   },
@@ -32,8 +35,9 @@ const ScooterSchema = new Schema({
   categoryId: {
     type: String
   },
-  subCategoryId: {
-    type: String
+  imagePath: {
+    type: String,
+    required: true
   }
 });
 

@@ -17,7 +17,7 @@ const scooterResolvers = {
         var docTags = '';
         const doc = await Scooter.findById(args._id);
         for (let i = 0; i < doc.tags.length; i++) {
-          docTags = doc.tags[i].replace(/,/g, ' ');
+          docTags += doc.tags[i].replace(/,/g, ' ') + ' ';
         }
         doc.tags = docTags;
         return doc;
@@ -35,11 +35,12 @@ const scooterResolvers = {
         priceVAT: (scooter.price * 1.25).toFixed(2),
         sku: scooter.sku,
         tags: scooter.tags.split(' '),
+        tagsArray: scooter.tags.split(' '),
         brand: scooter.brand,
         description: scooter.description,
         itemNo: scooter.itemNo,
         categoryId: scooter.categoryId,
-        subCategoryId: scooter.subCategoryId
+        imagePath: scooter.imagePath
       });
       if (!newScooter) {
         throw new Error('Elscooteren kunne ikke oprettes!');
@@ -55,6 +56,7 @@ const scooterResolvers = {
         }
         if (input.tags) {
           input.tags = input.tags.split(' ');
+          input.tagsArray = input.tags;
         }
         return await Scooter.findOneAndUpdate({ _id }, input, { new: true });
       } catch (error) {
