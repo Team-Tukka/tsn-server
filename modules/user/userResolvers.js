@@ -16,7 +16,6 @@ const userResolvers = {
       }
     },
     async me(_, args, { user }) {
-      console.log('user:' + user.id);
       if (!user) {
         throw new Error('Brugeren findes ikke');
       }
