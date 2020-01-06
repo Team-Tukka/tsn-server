@@ -20,6 +20,15 @@ const userResolvers = {
         throw new Error('Brugeren findes ikke');
       }
       return await User.findById(user.id);
+    },
+    me2: async (_, args) => {
+      try {
+        const decoded = jwt.verify(args.token, config.get('jwtSecret'));
+        const user = await User.findOne({ _id: decoded.id });
+        return { ...user._doc, password: null };
+      } catch (err) {
+        throw err;
+      }
     }
   },
   Mutation: {
