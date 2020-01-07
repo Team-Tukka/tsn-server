@@ -17,4 +17,5 @@ const textareaTypeDefs = gql`
     updateTextareaById(_id: ID!, input: TextareaInput): Textarea
   }
 `;
+
 module.exports = textareaTypeDefs;

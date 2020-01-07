@@ -50,4 +50,5 @@ const ScooterTypeDefs = gql`
     deleteScooterById(_id: ID!): Scooter
   }
 `;
+
 module.exports = ScooterTypeDefs;

@@ -1,4 +1,6 @@
-import { Schema, model } from "mongoose";
+/* Er endnu ikke udviklet til brug hverken på server eller i klient */
+
+import { Schema, model } from 'mongoose';
 
 const OrderSchema = new Schema({
   userId: {
@@ -19,6 +21,6 @@ const OrderSchema = new Schema({
   }
 });
 
-const Order = model("order", OrderSchema);
+const Order = model('order', OrderSchema);
 
 module.exports = Order;

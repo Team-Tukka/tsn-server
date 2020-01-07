@@ -41,12 +41,12 @@ const mailResolvers = {
         return newMail.save();
       }
     },
-    // Mutation til at slette en mail ud fra dens id
+    // Mutation til at slette en mail ud fra dens ID
     deleteMailById: async (_, args) => {
       try {
         return await Mail.findOneAndDelete({ _id: args._id });
       } catch (error) {
-        throw new Error('Der skete en fejl...');
+        throw new Error('Der skete en fejl!');
       }
     }
   }

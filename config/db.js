@@ -1,7 +1,8 @@
-const mongoose = require("mongoose");
-const config = require("config");
-const db = config.get("mongoURI");
+const mongoose = require('mongoose');
+const config = require('config');
+const db = config.get('mongoURI');
 
+// Skaber forbindelse til databasen gennem Mongoose
 const connectDB = async () => {
   try {
     await mongoose.connect(db, {
@@ -11,10 +12,10 @@ const connectDB = async () => {
       useUnifiedTopology: true
     });
 
-    console.log("MongoDB Connected!");
+    console.log('MongoDB forbundet!');
   } catch (err) {
     console.error(err.message);
-    //Afslutter processen pga. fejl
+    // Afslutter processen pga. fejl
     process.exit(1);
   }
 };

@@ -37,4 +37,5 @@ const userTypeDefs = gql`
     verifyToken(token: String!): User
   }
 `;
+
 module.exports = userTypeDefs;
