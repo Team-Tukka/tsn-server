@@ -48,7 +48,7 @@ const scooterResolvers = {
         return newScooter.save();
       }
     },
-    // Mutation til at opdatere en elscooter ud fra dens id
+    // Mutation til at opdatere en elscooter ud fra dens ID
     updateScooterById: async (_, { _id, input }) => {
       try {
         if (input.price) {
@@ -60,17 +60,18 @@ const scooterResolvers = {
         }
         return await Scooter.findOneAndUpdate({ _id }, input, { new: true });
       } catch (error) {
-        throw new Error('Der skete en fejl...');
+        throw new Error('Der skete en fejl!');
       }
     },
-    // Mutation til at slette en elscooter ud fra dens id
+    // Mutation til at slette en elscooter ud fra dens ID
     deleteScooterById: async (_, args) => {
       try {
         return await Scooter.findOneAndDelete({ _id: args._id });
       } catch (error) {
-        throw new Error('Der skete en fejl...');
+        throw new Error('Der skete en fejl!');
       }
     }
   }
 };
+
 module.exports = scooterResolvers;

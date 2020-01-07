@@ -1,9 +1,7 @@
 import config from 'config';
 import jwt from 'jsonwebtoken';
 
-/* Hvis brugeren har en user, bliver den verificeret
- *  ved hjælp af jwt´s verify funktion.
- */
+/* Hvis brugeren har en token, bliver den verificeret ved hjælp af jwt´s verify funktion */
 const getUser = token => {
   try {
     if (token) {
@@ -11,10 +9,7 @@ const getUser = token => {
     }
     return null;
   } catch (err) {
-    return (
-      'Token eksisterer ikke (TestBesked, getUser.js i auth mappen,' +
-      'slet / ret mig hvis jeg virker'
-    );
+    return 'Token eksisterer ikke!';
   }
 };
 

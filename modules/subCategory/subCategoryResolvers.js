@@ -20,7 +20,7 @@ const subCategoryResolvers = {
         throw new Error('Underkategorien findes ikke...');
       }
     },
-    // Resolver som tager imod et array af _id-felter og henter dokumentet for id'erne
+    // Resolver som tager imod et array af _id-felter og henter dokumentet for ID'erne
     getSubCategoriesByIds: async (_, args) => {
       try {
         return await SubCategory.find({ _id: { $in: args.input } });
@@ -45,27 +45,27 @@ const subCategoryResolvers = {
         imagePath: subCategory.imagePath
       });
       if (!newSubCategory) {
-        throw new Error('Underkategorien kunne ikke oprettes');
+        throw new Error('Underkategorien kunne ikke oprettes!');
       } else {
         return newSubCategory.save();
       }
     },
-    // Mutation til at opdatere en underkategori ud fra dens id
+    // Mutation til at opdatere en underkategori ud fra dens ID
     updateSubCategoryById: async (_, { _id, input }) => {
       try {
         return await SubCategory.findOneAndUpdate({ _id }, input, {
           new: true
         });
       } catch (error) {
-        throw new Error('Der skete en fejl...');
+        throw new Error('Der skete en fejl!');
       }
     },
-    // Mutation til at slette en underkategori ud fra dens id
+    // Mutation til at slette en underkategori ud fra dens ID
     deleteSubCategoryById: async (_, args) => {
       try {
         return await SubCategory.findOneAndDelete({ _id: args._id });
       } catch (error) {
-        throw new Error('Der skete en fejl...');
+        throw new Error('Der skete en fejl!');
       }
     }
   }

@@ -52,7 +52,9 @@ const userResolvers = {
         created: isoDate,
         lastLogin: isoDate
       });
+
       const checkMail = await User.findOne({ mail: user.mail });
+
       if (checkMail) {
         throw new Error('Mailen er allerede i brug!');
       } else if (!newUser) {
@@ -62,20 +64,20 @@ const userResolvers = {
       }
     },
 
-    // Login funktion med jsonwebtoken og bcryptjs
+    // Login-funktion med jsonwebtoken og bcryptjs
     login: async (_, args) => {
       var date = new Date().getTimezoneOffset() * 60000;
       var isoDate = new Date(Date.now() - date).toISOString().slice(0, -5);
       try {
         const user = await User.findOne({ mail: args.mail });
-        if (!user) throw new Error('Din mail eller password er forkert');
+        if (!user) throw new Error('Din mail eller password er forkert!');
         const passwordIsValid = bcryptjs.compareSync(
           args.password,
           user.password
         );
 
         if (!passwordIsValid)
-          throw new Error('Din mail eller password er forkert');
+          throw new Error('Din mail eller password er forkert!');
         const token = jwt.sign({ id: user._id }, config.get('jwtSecret'), {
           expiresIn: '1d'
         });
