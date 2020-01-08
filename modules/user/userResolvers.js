@@ -27,7 +27,11 @@ const userResolvers = {
         const user = await User.findOne({ _id: decoded.id });
         return { ...user._doc, password: null };
       } catch (err) {
-        throw err;
+        if (err.message === 'jwt expired') {
+          throw new Error('Token er udløbet!');
+        } else {
+          throw err;
+        }
       }
     }
   },
@@ -78,9 +82,11 @@ const userResolvers = {
 
         if (!passwordIsValid)
           throw new Error('Din mail eller password er forkert!');
-        const token = jwt.sign({ id: user._id }, config.get('jwtSecret'), {
-          expiresIn: '1d'
-        });
+        const token = jwt.sign(
+          { exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24, id: user._id },
+          config.get('jwtSecret'),
+          {}
+        );
 
         const updatedUser = await User.findOneAndUpdate(
           {
@@ -106,7 +112,11 @@ const userResolvers = {
         const user = await User.findOne({ _id: decoded.id });
         return { ...user._doc, password: null };
       } catch (err) {
-        throw err;
+        if (err.message === 'jwt expired') {
+          throw new Error('Token er udløbet!');
+        } else {
+          throw err;
+        }
       }
     }
   }
