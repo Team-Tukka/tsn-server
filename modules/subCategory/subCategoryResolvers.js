@@ -1,4 +1,4 @@
-import SubCategory from './models/subCategory';
+import SubCategory from './models/SubCategory';
 
 const subCategoryResolvers = {
   Query: {
