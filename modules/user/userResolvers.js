@@ -20,6 +20,19 @@ const userResolvers = {
         throw new Error('Brugeren findes ikke');
       }
       return await User.findById(user.id);
+    },
+    me2: async (_, args) => {
+      try {
+        const decoded = jwt.verify(args.token, config.get('jwtSecret'));
+        const user = await User.findOne({ _id: decoded.id });
+        return { ...user._doc, password: null };
+      } catch (err) {
+        if (err.message === 'jwt expired') {
+          throw new Error('Token er udløbet!');
+        } else {
+          throw err;
+        }
+      }
     }
   },
   Mutation: {
@@ -43,7 +56,9 @@ const userResolvers = {
         created: isoDate,
         lastLogin: isoDate
       });
+
       const checkMail = await User.findOne({ mail: user.mail });
+
       if (checkMail) {
         throw new Error('Mailen er allerede i brug!');
       } else if (!newUser) {
@@ -53,23 +68,25 @@ const userResolvers = {
       }
     },
 
-    // Login funktion med jsonwebtoken og bcryptjs
+    // Login-funktion med jsonwebtoken og bcryptjs
     login: async (_, args) => {
       var date = new Date().getTimezoneOffset() * 60000;
       var isoDate = new Date(Date.now() - date).toISOString().slice(0, -5);
       try {
         const user = await User.findOne({ mail: args.mail });
-        if (!user) throw new Error('Din mail eller password er forkert');
+        if (!user) throw new Error('Din mail eller password er forkert!');
         const passwordIsValid = bcryptjs.compareSync(
           args.password,
           user.password
         );
 
         if (!passwordIsValid)
-          throw new Error('Din mail eller password er forkert');
-        const token = jwt.sign({ id: user._id }, config.get('jwtSecret'), {
-          expiresIn: '1d'
-        });
+          throw new Error('Din mail eller password er forkert!');
+        const token = jwt.sign(
+          { exp: Math.floor(Date.now() / 1000) + 60 * 60 * 24, id: user._id },
+          config.get('jwtSecret'),
+          {}
+        );
 
         const updatedUser = await User.findOneAndUpdate(
           {
@@ -95,7 +112,11 @@ const userResolvers = {
         const user = await User.findOne({ _id: decoded.id });
         return { ...user._doc, password: null };
       } catch (err) {
-        throw err;
+        if (err.message === 'jwt expired') {
+          throw new Error('Token er udløbet!');
+        } else {
+          throw err;
+        }
       }
     }
   }

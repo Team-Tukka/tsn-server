@@ -26,7 +26,7 @@ const ScooterTypeDefs = gql`
     description: String
     itemNo: String
     categoryId: String
-    imagePath: String!
+    imagePath: String
   }
 
   extend type Query {
@@ -50,4 +50,5 @@ const ScooterTypeDefs = gql`
     deleteScooterById(_id: ID!): Scooter
   }
 `;
+
 module.exports = ScooterTypeDefs;

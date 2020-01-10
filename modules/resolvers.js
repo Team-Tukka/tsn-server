@@ -15,4 +15,5 @@ const resolvers = [
   categoryResolvers,
   subCategoryResolvers
 ];
+
 module.exports = resolvers;
