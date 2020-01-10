@@ -17,7 +17,7 @@ const scooterResolvers = {
         var docTags = '';
         const doc = await Scooter.findById(args._id);
         for (let i = 0; i < doc.tags.length; i++) {
-          docTags = doc.tags[i].replace(/,/g, ' ');
+          docTags += doc.tags[i].replace(/,/g, ' ') + ' ';
         }
         doc.tags = docTags;
         return doc;
@@ -35,11 +35,12 @@ const scooterResolvers = {
         priceVAT: (scooter.price * 1.25).toFixed(2),
         sku: scooter.sku,
         tags: scooter.tags.split(' '),
+        tagsArray: scooter.tags.split(' '),
         brand: scooter.brand,
         description: scooter.description,
         itemNo: scooter.itemNo,
         categoryId: scooter.categoryId,
-        subCategoryId: scooter.subCategoryId
+        imagePath: scooter.imagePath
       });
       if (!newScooter) {
         throw new Error('Elscooteren kunne ikke oprettes!');
@@ -47,7 +48,7 @@ const scooterResolvers = {
         return newScooter.save();
       }
     },
-    // Mutation til at opdatere en elscooter ud fra dens id
+    // Mutation til at opdatere en elscooter ud fra dens ID
     updateScooterById: async (_, { _id, input }) => {
       try {
         if (input.price) {
@@ -55,20 +56,22 @@ const scooterResolvers = {
         }
         if (input.tags) {
           input.tags = input.tags.split(' ');
+          input.tagsArray = input.tags;
         }
         return await Scooter.findOneAndUpdate({ _id }, input, { new: true });
       } catch (error) {
-        throw new Error('Der skete en fejl...');
+        throw new Error('Der skete en fejl!');
       }
     },
-    // Mutation til at slette en elscooter ud fra dens id
+    // Mutation til at slette en elscooter ud fra dens ID
     deleteScooterById: async (_, args) => {
       try {
         return await Scooter.findOneAndDelete({ _id: args._id });
       } catch (error) {
-        throw new Error('Der skete en fejl...');
+        throw new Error('Der skete en fejl!');
       }
     }
   }
 };
+
 module.exports = scooterResolvers;

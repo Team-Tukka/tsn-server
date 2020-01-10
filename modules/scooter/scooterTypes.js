@@ -8,11 +8,12 @@ const ScooterTypeDefs = gql`
     priceVAT: Float
     sku: String
     tags: [String]
+    tagsArray: [String]
     brand: String
     description: String
     itemNo: String!
     categoryId: String
-    subCategoryId: String
+    imagePath: String
   }
   input ScooterIn {
     _id: ID
@@ -25,7 +26,7 @@ const ScooterTypeDefs = gql`
     description: String
     itemNo: String
     categoryId: String
-    subCategoryId: String
+    imagePath: String
   }
 
   extend type Query {
@@ -43,10 +44,11 @@ const ScooterTypeDefs = gql`
       description: String
       itemNo: String!
       categoryId: String
-      subCategoryId: String
+      imagePath: String!
     ): Scooter
     updateScooterById(_id: ID!, input: ScooterIn): Scooter
     deleteScooterById(_id: ID!): Scooter
   }
 `;
+
 module.exports = ScooterTypeDefs;

@@ -1,4 +1,6 @@
-import { Schema, model } from "mongoose";
+/* Er endnu ikke udviklet til brug hverken på server eller i klient */
+
+import { Schema, model } from 'mongoose';
 
 const InvoiceSchema = new Schema({
   orderId: {
@@ -20,12 +22,12 @@ const InvoiceSchema = new Schema({
   sellerName: {
     type: String,
     required: true,
-    default: "Top Scooter Nordic A/S"
+    default: 'Top Scooter Nordic A/S'
   },
   sellerAddress: {
     type: String,
     required: true,
-    default: "Håndværkervej 25a, 4160"
+    default: 'Håndværkervej 25a, 4160'
   },
   buyerName: {
     type: String,
@@ -53,6 +55,6 @@ const InvoiceSchema = new Schema({
   }
 });
 
-const Invoice = model("invoice", InvoiceSchema);
+const Invoice = model('invoice', InvoiceSchema);
 
 module.exports = Invoice;

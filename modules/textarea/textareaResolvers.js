@@ -12,7 +12,7 @@ const textareaResolvers = {
         return doc;
       }
     },
-    //Query til at hente ét tekstfelt ud fra dets id.
+    // Query til at hente ét tekstfelt ud fra dets ID
     getTextareaById: async (_, args) => {
       return await Textarea.findById(args._id);
     }
@@ -24,14 +24,14 @@ const textareaResolvers = {
         text: textarea.text
       });
       if (!newTextarea) {
-        throw new Error('Textfeltet kunne ikke oprettes!');
+        throw new Error('Tekstfeltet kunne ikke oprettes!');
       } else {
         return newTextarea.save();
       }
     },
-    // Mutation til at opdatere et tekstfelt efter id
+    // Mutation til at opdatere et tekstfelt efter ID
     updateTextareaById: async (_, { _id, input }) => {
-      //Hvis man ikke indtaster den nye tekst, så smides en fejl
+      // Hvis man ikke indtaster den nye tekst, så smides en fejl
       if (!input) {
         throw new Error('Fejl i opdateret tekst!');
       } else {
@@ -40,4 +40,5 @@ const textareaResolvers = {
     }
   }
 };
+
 module.exports = textareaResolvers;
